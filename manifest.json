@@ -1,0 +1,29 @@
+{
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "a.fms@hotmail.com",
+      "update_url": "https://example.com/updates.json"
+    }
+  },
+  "manifest_version": 3,
+  "name": "SAS Internal Extension",
+  "version": "1.0",
+  "description": "ShareASale internal extension",
+  "permissions": ["storage", "contextMenus"],
+  "icons": {
+    "16": "images/SAS - 16x16.png",
+    "32": "images/SAS - 32x32.png",
+    "48": "images/SAS - 64x64.png",
+    "128": "images/SAS - 128x128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "options_page": "options/options.html",
+  "background": {
+    "scripts": ["scripts/background.js"]
+  }
+}
