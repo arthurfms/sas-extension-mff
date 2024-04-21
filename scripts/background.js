@@ -25,15 +25,14 @@ const getOptions = () => {
           items.affContext)
       ) {
         let contextOptions = {};
-
         items.merContext
           ? (contextOptions.merchant = "Go to Merchant: %s")
           : "";
         items.itpContext ? (contextOptions.itp = "Merchant ITP: %s") : "";
+
         items.affContext
           ? (contextOptions.affiliate = "Go to Affiliate: %s")
           : "";
-
         // Add a listener to create the initial context menu items,
         // context menu items only need to be created at runtime.onInstalled
         for (const [op, title] of Object.entries(contextOptions)) {
