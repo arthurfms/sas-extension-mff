@@ -2,7 +2,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "a.fms@hotmail.com",
-      "update_url": "https://example.com/updates.json"
+      "update_url": "updates.json"
     }
   },
   "manifest_version": 3,
