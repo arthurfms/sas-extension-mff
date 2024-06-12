@@ -19,7 +19,6 @@ window.addEventListener("load", () => {
       callBack(elements, evt);
     });
   };
-
   // Decode URL
   const decodeUrl = (inp, container) => {
     let decodedUrl = decodeURIComponent(inp);
@@ -29,7 +28,7 @@ window.addEventListener("load", () => {
       ? decodedUrl.split("?")[1].split("&")
       : decodedUrl.split("&");
     container.value = "";
-    mainUrl ? (container.value = `${mainUrl}\n\n`) : "";
+    container.value = `${decodedUrl}\n\n`;
     queryParams.forEach((param, index) => {
       index == 0
         ? (container.value = container.value + `${param}`)
@@ -156,6 +155,7 @@ window.addEventListener("load", () => {
     ) {
       let firstContainer = document.createElement("div");
       firstContainer.classList.add("menu-container");
+      firstContainer.classList.add("menu-container_buttons");
       options.sasUI
         ? (firstContainer.innerHTML += `
           <a class="menu-container__button" id="sas-ui" href="https://account.shareasale.com/admin/index.cfm" target="_parent">SAS UI</a>`)
@@ -185,6 +185,7 @@ window.addEventListener("load", () => {
     if (options.decoder || options.ftpCred) {
       let secondContainer = document.createElement("div");
       secondContainer.classList.add("menu-container");
+      secondContainer.classList.add("menu-container_textarea");
       let leftDiv = document.createElement("div");
       leftDiv.classList.add("menu-container__left");
 
@@ -222,7 +223,7 @@ window.addEventListener("load", () => {
         : "";
       secondContainer.append(leftDiv);
       secondContainer.innerHTML += `
-      <div class="menu-container__right menu-container__right_bigh">
+      <div class="menu-container__right">
         <textarea
           class="menu-container__input menu-container__result" 
           id="dec-ftp-input" 
@@ -404,8 +405,6 @@ window.addEventListener("load", () => {
   const handleComponents = (optionsItems, element, container) => {
     //adding element attributes
     element.title = "SAS Internal Extension";
-    element.style =
-      "width: 40px; height: 70px; position: fixed; bottom: 75px; right: 0px; border: none; background: transparent; z-index: 100";
 
     // Create style elements
     let styleLink = document.createElement("link");
@@ -475,9 +474,34 @@ window.addEventListener("load", () => {
             items.testAffiliate)
         ) {
           // Handle the page
+          let styleElement = createComponent("style", "sas-iframe-style", []);
+          styleElement.innerHTML = `
+          #sas-iframe.sas-extension-iframe {
+            width: 35px;
+            height: 70px;
+            position: fixed;
+            bottom: 75px;
+            right: 0px;
+            border: none;
+            background: transparent;
+            z-index: 100;
+            border-radius: 40px 0px 0px 40px;
+            background: rgba(244, 244, 244, 0.35);
+            box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            z-index: 100000000;
+          }
+          #sas-iframe.sas-extension-iframe:hover {
+            box-shadow: -3px 2px 3px 0px rgba(0, 0, 0, 0.2);
+          }
+          `;
           let exIframe = createComponent("iframe", "sas-iframe", [
             "sas-extension-iframe",
           ]);
+
           handleComponents(
             items,
             exIframe,
@@ -499,9 +523,11 @@ window.addEventListener("load", () => {
                   (el[0].style.height = `${
                     el[1].querySelector(".menu").scrollHeight + 120
                   }px`);
+                el[0].classList.add("sas-extension-iframe_active");
               } else {
-                (el[0].style.width = "40px"), (el[0].style.height = "75px");
+                (el[0].style.width = "35px"), (el[0].style.height = "70px");
                 cleanInputs(el[1]);
+                el[0].classList.remove("sas-extension-iframe_active");
               }
             }
           );
@@ -511,9 +537,10 @@ window.addEventListener("load", () => {
             [exIframe, iframeBody],
             "click",
             (el, evt) => {
-              (el[0].style.width = "40px"), (el[0].style.height = "75px");
+              (el[0].style.width = "35px"), (el[0].style.height = "70px");
               el[1].classList.remove("sas-extension_active");
               cleanInputs(el[1]);
+              el[0].classList.remove("sas-extension-iframe_active");
             }
           );
           // Close when clicking at close button
@@ -536,6 +563,7 @@ window.addEventListener("load", () => {
               document.querySelector("html").attributes["data-color-mode"]
                 .value == "auto"
             ) {
+              exIframe.classList.add("sas-extension-iframe_dark");
               iframeBody
                 .querySelector(".extension-button")
                 .classList.add("extension-button_dark");
