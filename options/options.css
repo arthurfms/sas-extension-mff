@@ -117,6 +117,9 @@
   justify-content: space-between;
   align-items: center;
 }
+#activate-options .option {
+  width: 65%;
+}
 .options-section_big .option {
   width: 50%;
 }
