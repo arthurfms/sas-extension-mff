@@ -15,28 +15,8 @@ window.addEventListener("load", () => {
 
   // Saves options to chrome.storage
   const saveOptions = () => {
-    let activateMenuContext = document
-      .querySelector("#menu-context-option .option__selection")
-      .classList.contains("option__selection_selected")
-      ? true
-      : false;
     let activateExtension = document
       .querySelector("#extension-option .option__selection")
-      .classList.contains("option__selection_selected")
-      ? true
-      : false;
-    let merchantContext = document
-      .querySelector("#merchant-context .option__selection")
-      .classList.contains("option__selection_selected")
-      ? true
-      : false;
-    let itpContext = document
-      .querySelector("#itp-context .option__selection")
-      .classList.contains("option__selection_selected")
-      ? true
-      : false;
-    let affiliateContext = document
-      .querySelector("#affiliate-context .option__selection")
       .classList.contains("option__selection_selected")
       ? true
       : false;
@@ -88,11 +68,7 @@ window.addEventListener("load", () => {
 
     chrome.storage.sync.set(
       {
-        menucontext: activateMenuContext,
         extension: activateExtension,
-        merContext: merchantContext,
-        itpContext: itpContext,
-        affContext: affiliateContext,
         datafeed: activateDatafeed,
         sasUI: sasUI,
         decoder: decoder,
@@ -121,11 +97,7 @@ window.addEventListener("load", () => {
   const resetOptions = () => {
     chrome.storage.sync.set(
       {
-        menucontext: true,
         extension: true,
-        merContext: true,
-        itpContext: true,
-        affContext: true,
         datafeed: true,
         sasUI: true,
         decoder: true,
@@ -154,11 +126,7 @@ window.addEventListener("load", () => {
   const restoreOptions = () => {
     chrome.storage.sync.get(
       {
-        menucontext: true,
         extension: true,
-        merContext: true,
-        itpContext: true,
-        affContext: true,
         datafeed: true,
         sasUI: true,
         decoder: true,
@@ -170,29 +138,9 @@ window.addEventListener("load", () => {
         testAffiliate: true,
       },
       (items) => {
-        items.menucontext
-          ? document
-              .querySelector("#menu-context-option .option__selection")
-              .classList.add("option__selection_selected")
-          : "";
         items.extension
           ? document
               .querySelector("#extension-option .option__selection")
-              .classList.add("option__selection_selected")
-          : "";
-        items.merContext
-          ? document
-              .querySelector("#merchant-context .option__selection")
-              .classList.add("option__selection_selected")
-          : "";
-        items.itpContext
-          ? document
-              .querySelector("#itp-context .option__selection")
-              .classList.add("option__selection_selected")
-          : "";
-        items.affContext
-          ? document
-              .querySelector("#affiliate-context .option__selection")
               .classList.add("option__selection_selected")
           : "";
         items.datafeed
@@ -240,16 +188,6 @@ window.addEventListener("load", () => {
               .querySelector("#test-affiliate .option__selection")
               .classList.add("option__selection_selected")
           : "";
-
-        if (
-          !document
-            .querySelector("#menu-context-option .option__selection")
-            .classList.contains("option__selection_selected")
-        ) {
-          document
-            .querySelector("#menu-context-options")
-            .classList.add("options-section_disable");
-        }
         if (
           !document
             .querySelector("#extension-option .option__selection")
@@ -275,19 +213,6 @@ window.addEventListener("load", () => {
       op.classList.toggle("option__selection_selected");
 
       // Handle general options
-      if (
-        op.parentNode.id == "menu-context-option" &&
-        op.classList.contains("option__selection_selected")
-      ) {
-        document
-          .querySelector("#menu-context-options")
-          .classList.remove("options-section_disable");
-      } else if (op.parentNode.id == "menu-context-option") {
-        document
-          .querySelector("#menu-context-options")
-          .classList.add("options-section_disable");
-      }
-
       if (
         op.parentNode.id == "extension-option" &&
         op.classList.contains("option__selection_selected")
