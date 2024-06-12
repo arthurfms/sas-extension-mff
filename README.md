@@ -30,5 +30,25 @@ Please contact us if you have any question or suggestion: arthur.santos@awin.com
 Use [this link](https://forms.office.com/Pages/ResponsePage.aspx?id=07KaWlh7JUWYUdFycma616g2cST2-q5KjLNHxAQeG-RUNzc3Qjk0MVg2MU1UMk44WVI3Q1lDMTZKRy4u) to report a bug or send feedback, your opinion is appreciated!
 
 
+Latest Updates: 
+
+:white_check_mark: Removed the context menu options leeaving only the "Merchant" option, change made to fix the first click error.
+
+:white_check_mark: Style changes, added a style tag with iframe styles on the website. Change made to improve styles from the iframe and solve dark mode style issues.
+
+
+Coming Soon:
+:hourglass_flowing_sand: Add full decoded link in place of base url before parameter's list.
+
+:hourglass_flowing_sand: Decode/FTP area organization to have the textarea at a vertical position: improve readability and usability of the input.
+
+:hourglass_flowing_sand: Create a popup window when clicking at the extension button: new feature to allow user to activate this popup and use the tools in there.
+
+:hourglass_flowing_sand: Allow the user to add buttons with customized links
+
+:grey_question: Add the option to reorder the fields and improve the usability for each user.
+
+:grey_question: Add the option to choose the size of the Decode/FTP textarea input. 
+
 
 ***© ShareASale | Global Integration Team - 2024***
