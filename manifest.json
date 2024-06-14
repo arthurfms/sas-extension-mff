@@ -2,7 +2,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "a.fms@hotmail.com",
-      "update_url": "updates.json"
+      "update_url": "https://arthurfms.github.io/sas-extension-mff/updates.json"
     }
   },
   "manifest_version": 3,
