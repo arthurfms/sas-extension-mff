@@ -3,7 +3,7 @@
     "{abcd1234-1abc-1234-12ab-abcdef123456}": {
       "updates": [
         {
-          "version": "1.0",
+          "version": "1.2",
           "update_link": "sas-extension-mff-1.2.xpi"
         }
       ]
