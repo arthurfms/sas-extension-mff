@@ -7,7 +7,7 @@
   },
   "manifest_version": 3,
   "name": "SAS Internal Extension",
-  "version": "1.1",
+  "version": "2.0",
   "description": "ShareASale internal extension",
   "permissions": ["storage", "contextMenus"],
   "icons": {
