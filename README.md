@@ -21,7 +21,7 @@
 
 > MOZILLA FIREFOX:
 >
->  - Use [this link](#) to install the extension into your browser.
+>  - Use [this link](https://arthurfms.github.io/sas-extension-mff/firefox-download.html) to install the extension into your browser.
 
 </details>
 
